@@ -1,7 +1,7 @@
 import re
 
 input_path = "michael-cooke-portfolio/resources/dictionary.html"
-output_path = "../resources/dictionary_cleaned.html"
+output_path = "michael-cooke-portfolio/resources/dictionary_cleaned.html" # Changed this line!
 
 # Regex to match <div class="word-list-entry"><strong>WORD</strong> MEANING</div>
 entry_re = re.compile(
