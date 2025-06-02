@@ -79,10 +79,9 @@ dd {
 }
 
 /* Word List Entries Container (for the whole section, e.g., 'N' or 'NG' section) */
+/* THIS IS THE KEY CHANGE: REMOVE display: flex; and flex-direction: row; */
 .word-list-entry {
     margin-bottom: 10px; /* Spacing below the entire block of words */
-    /* REMOVE display: flex; and flex-direction: row; from here */
-    /* They are causing the main headings and word items to align horizontally */
     font-size: 1.05em; /* Apply general font size for entries */
 }
 
