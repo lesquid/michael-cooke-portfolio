@@ -38,12 +38,27 @@ h3 {
     margin-bottom: 15px;
 }
 
+/* Corrected .section-title usage */
+/* Apply this to the main section title, typically an H2 or H1 */
 .section-title {
-    font-size: 1.5em; /* Slightly larger for main sections */
+    font-size: 1.5em; /* Adjust as needed, but typically slightly smaller than main H1 */
     font-weight: bold;
     margin-bottom: 25px;
     color: #0056b3; /* A soft blue for section titles */
+    /* If this class is on an h1 or h2, their existing text-align might apply */
+    text-align: left; /* Ensure it's left-aligned if it's a section header */
 }
+
+/* Specific adjustment for "Section 1" span in H1/H2 (if HTML structure is like this) */
+/* This targets the <span> inside an <h2>, which is how 'Section 1' is structured in your HTML */
+h1 span.section-title, /* If you had <h1 class="main-title">Ngaanyatjarra Word List <span class="section-title">Section 1</span></h1> */
+h2 span.section-title { /* For <h2 class="section-title">Section 1</h2> or <h2><span class="section-title">Section 1</span></h2> */
+    font-size: 0.8em; /* Make it smaller relative to its parent heading */
+    color: #555; /* Mute its color */
+    margin-left: 10px; /* Space it from the main heading text */
+    display: inline; /* Ensure it behaves like text within the heading */
+}
+
 
 /* Paragraphs */
 p {
@@ -78,19 +93,13 @@ dd {
     margin-left: 0; /* Remove default margin */
 }
 
-/* Word List Entries Container (for the whole section, e.g., 'N' or 'NG' section) */
-/* THIS IS THE KEY CHANGE: REMOVE display: flex; and flex-direction: row; */
-.word-list-entry {
-    margin-bottom: 10px; /* Spacing below the entire block of words */
-    font-size: 1.05em; /* Apply general font size for entries */
-}
-
 /* Individual Word List Item (Ngaanyatjarra word and its English meaning) */
+/* This is crucial: .word-list-item is the direct container of strong and span */
 .word-list-item {
     display: flex; /* Use flexbox to align the strong and span horizontally */
     align-items: baseline; /* Align text at the baseline */
     margin-bottom: 5px; /* Add vertical spacing between individual word entries */
-    /* No need for display: block here, as flex containers are block-level by default */
+    /* flex-wrap: wrap; if you expect meanings to sometimes wrap below the word */
 }
 
 /* Styling for the Ngaanyatjarra word itself */
@@ -99,6 +108,8 @@ dd {
     margin-right: 10px; /* Space between word and definition */
     color: #007bff; /* A distinct color for the word itself */
     font-size: 1.1em; /* Make the word slightly larger and bolder */
+    min-width: 120px; /* Give the Ngaanyatjarra words a minimum width for alignment */
+    /* Adjust min-width as needed to align the English meanings better */
 }
 
 /* Styling for the English meaning */
@@ -125,29 +136,11 @@ dd {
 }
 
 /* Page Numbers (from the original PDF, kept for visual reference) */
-body > div > p:last-child { /* Targets the last <p> in each .page-break div */
+/* More robust selector for page numbers */
+.page-break > p:last-child {
     text-align: right;
     font-size: 0.9em;
     color: #888;
     margin-top: 20px;
     margin-bottom: 0;
 }
-
-/* Specific adjustments for "Section 1" span in H1 on page 7 */
-h1 .section-title {
-    font-size: 0.8em; /* Make it smaller than the main H1 */
-    color: #555; /* Mute its color */
-    margin-left: 10px; /* Space it from the H1 text */
-}
-
-/* Optional: If you want to use Google Fonts for better font variety */
-/* Add this to your <head> section in HTML:
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-*/
-
-/* Then, you could change your body font-family to: */
-/* font-family: 'Lora', serif; */
-/* or */
-/* font-family: 'Merriweather', serif; */
